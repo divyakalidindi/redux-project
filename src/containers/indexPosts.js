@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { fetchPosts } from '../actions';
+import { fetchPosts } from '../actions/index';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 class Home extends Component {
 
@@ -9,22 +10,34 @@ class Home extends Component {
     this.props.fetchPosts();
   }
 
-  render () {
-      if ( this.props.posts == null ) {
-        console.log('null');
-        <h1>There are no posts!</h1>
-      } else {
-          return this.props.posts.map((post) => {
-            // return Link?
-            console.log('return a link?');
-          });
-      }
+  renderPosts() {
+    if (this.props.posts.length === 0) {
+      return <p>No posts!</p>;
+    } else {
+      return this.props.posts.map((post) => {
+        return (<li key={post.id}>
+          <Link to={`posts/${post.id}`}>
+            <span>{post.title}</span>
+          </Link>
+        </li>);
+      });
     }
+  }
 
-const mapStateToProps = (state) => {
+  render() {
+    return (
+      <ul>
+        {this.renderPosts()}
+      </ul>
+    );
+  }
+}
 
-  posts: state.posts.all
 
-}};
+const mapStateToProps = (state) => (
+  {
+    posts: state.posts.all,
+  }
+);
 
 export default connect(mapStateToProps, { fetchPosts })(Home);

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { createPost } from '../actions';
+import { createPost } from '../actions/index';
 import { connect } from 'react-redux';
+
 
 class Post extends Component {
   constructor(props) {
     super(props);
     this.state = {
       title: '',
-      contents: '',
+      content: '',
       tags: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
@@ -17,7 +18,7 @@ class Post extends Component {
   }
 
   onSubmit(event) {
-    const fields = { title: this.state.title, contents: this.state.contents, tags: this.state.tags };
+    const fields = { title: this.state.title, content: this.state.content, tags: this.state.tags };
     this.props.createPost(fields);
     console.log('created Post!');
   }
@@ -27,7 +28,7 @@ class Post extends Component {
   }
 
   onChangeContents(event) {
-    this.setState({ contents: event.target.value });
+    this.setState({ content: event.target.value });
   }
 
   onChangeTags(event) {
@@ -41,6 +42,8 @@ class Post extends Component {
         <input value={this.state.contents} onChange={this.onChangeContents} placeholder="contents" />
         <input value={this.state.tags} onChange={this.onChangeTags} placeholder="tags" />
         <button onClick={this.onSubmit}>Submit</button>
+
+
       </div>
     );
   }
