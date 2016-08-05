@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createPost } from '../actions/index';
 import { connect } from 'react-redux';
+import { Link } from 'react-router';
 
 
 class Post extends Component {
@@ -18,9 +19,13 @@ class Post extends Component {
   }
 
   onSubmit(event) {
-    const fields = { title: this.state.title, content: this.state.content, tags: this.state.tags };
-    this.props.createPost(fields);
-    console.log('created Post!');
+    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags };
+    if (this.state.title.length === 0) {
+      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags };
+      this.props.createPost(fields);
+    } else {
+      this.props.createPost(fields);
+    }
   }
 
   onChangeTitle(event) {
@@ -37,13 +42,25 @@ class Post extends Component {
 
   render() {
     return (
-      <div>
-        <input value={this.state.title} onChange={this.onChangeTitle} placeholder={"title"} />
-        <input value={this.state.contents} onChange={this.onChangeContents} placeholder="contents" />
-        <input value={this.state.tags} onChange={this.onChangeTags} placeholder="tags" />
-        <button onClick={this.onSubmit}>Submit</button>
-
-
+      <div className="newPost">
+        <div className="heading">
+          <span>Create a New Post</span>
+        </div>
+        <div className="inputs">
+          <input value={this.state.title} onChange={this.onChangeTitle} placeholder={"title"} />
+        </div>
+        <div className="inputs">
+          <input value={this.state.tags} onChange={this.onChangeTags} placeholder="tags" />
+        </div>
+        <div className="inputs">
+          <input value={this.state.contents} onChange={this.onChangeContents} placeholder="contents" />
+        </div>
+        <div className="button">
+          <button id="submit" onClick={this.onSubmit}>Submit</button>
+          <Link to="/">
+            <button id="cancel">Cancel</button>
+          </Link>
+        </div>
       </div>
     );
   }

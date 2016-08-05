@@ -12,7 +12,7 @@ class Home extends Component {
 
   renderPosts() {
     if (this.props.posts.length === 0) {
-      return <p>No posts!</p>;
+      return <h1>No posts!</h1>;
     } else {
       return this.props.posts.map((post) => {
         return (<li key={post.id}>
@@ -26,9 +26,9 @@ class Home extends Component {
 
   render() {
     return (
-      <ul>
+      <div className="PostsList">
         {this.renderPosts()}
-      </ul>
+      </div>
     );
   }
 }

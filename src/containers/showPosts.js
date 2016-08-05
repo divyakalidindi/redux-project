@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { fetchPost, deletePost, updatePost } from '../actions/index';
 import { connect } from 'react-redux';
 import marked from 'marked';
+import Textarea from 'react-textarea-autosize';
+import { Link } from 'react-router';
 
 
 class Show extends Component {
@@ -68,7 +70,7 @@ class Show extends Component {
   renderTitleEdits() {
     if (!this.state.isEditTitle) {
       return (
-        <div onClick={() => this.setState(
+        <div className="titles" onClick={() => this.setState(
           { isEditTitle: true,
             isEditTags: false,
             isEditContent: false,
@@ -79,7 +81,7 @@ class Show extends Component {
       );
     } else {
       return (
-        <input value={this.state.newTitle} onChange={this.titleOnChange} onBlur={this.setTitle} autoFocus />
+        <input className="titles" value={this.state.newTitle} onChange={this.titleOnChange} onBlur={this.setTitle} autoFocus />
       );
     }
   }
@@ -87,18 +89,18 @@ class Show extends Component {
   renderTagEdits() {
     if (!this.state.isEditTags) {
       return (
-        <div onClick={() => this.setState({
+        <div className="tags" onClick={() => this.setState({
           isEditTitle: false,
           isEditTags: true,
           isEditContent: false,
           newTitle: this.props.post.title,
           newTag: this.props.post.tags,
           newContent: this.props.post.content,
-        })}>{this.props.post.tags}</div>
+        })}><i>{this.props.post.tags}</i></div>
       );
     } else {
       return (
-        <input value={this.state.newTag} onChange={this.tagsOnChange} onBlur={this.setTags} autoFocus />
+        <input className="tags" value={this.state.newTag} onChange={this.tagsOnChange} onBlur={this.setTags} autoFocus />
       );
     }
   }
@@ -106,7 +108,7 @@ class Show extends Component {
   renderContentEdits() {
     if (!this.state.isEditContent) {
       return (
-        <div onClick={() => this.setState({
+        <div className="contents" onClick={() => this.setState({
           isEditTitle: false,
           isEditTags: false,
           isEditContent: true,
@@ -119,24 +121,32 @@ class Show extends Component {
       );
     } else {
       return (
-        <textarea value={this.state.newContent} onChange={this.contentOnChange} onBlur={this.setContent} autoFocus />
+        <Textarea className="contents" value={this.state.newContent} onChange={this.contentOnChange} onBlur={this.setContent} autoFocus />
       );
     }
   }
-
 
   render() {
     if (!this.props.post) {
       return <p>loading...</p>;
     } else {
       return (
-        <div>
-          <div className="edits">
-            <div>{this.renderTitleEdits()}</div>
-            <div>{this.renderTagEdits()}</div>
-            <div>{this.renderContentEdits()}</div>
+        <div className="showPosts">
+          <div className="postHeader">
+            <Link to="/">Back to Index</Link>
           </div>
-          <button onClick={this.deletePost}>Delete</button>
+          <div className="showNote">
+            <div className="title-box">
+              <div>{this.renderTitleEdits()}</div>
+            </div>
+            <div className="tags-box">
+              <div>{this.renderTagEdits()}</div>
+            </div>
+            <div className="contents-box">
+              <div>{this.renderContentEdits()}</div>
+            </div>
+            <button id="delButton" onClick={this.deletePost}>Delete</button>
+          </div>
         </div>
       );
     }
