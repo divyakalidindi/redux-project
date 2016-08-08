@@ -34,21 +34,18 @@ class Show extends Component {
 
 
   setTitle() {
-    this.updatePost();
     this.setState({ ...this.state, isEditTitle: false });
-    // this.updatePost();
+    this.updatePost();
   }
 
   setTags() {
-    this.updatePost();
     this.setState({ ...this.state, isEditTags: false });
-    // this.updatePost();
+    this.updatePost();
   }
 
   setContent() {
-    this.updatePost();
     this.setState({ ...this.state, isEditContent: false });
-    // this.updatePost();
+    this.updatePost();
   }
 
   updatePost() {
