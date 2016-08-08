@@ -10,7 +10,9 @@ export const ActionTypes = {
   FETCH_POSTS: 'FETCH_POSTS',
 };
 
-const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
+// const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
+// const ROOT_URL = 'http://localhost:9090/api';
+const ROOT_URL = 'damp-basin-30328.herokuapp.com';
 const API_KEY = '?key=divya_kalidindi';
 
 export function fetchPost(id) {
