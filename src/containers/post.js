@@ -19,9 +19,9 @@ class Post extends Component {
   }
 
   onSubmit(event) {
-    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags, author: this.props.user };
+    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags };
     if (this.state.title.length === 0) {
-      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags, author: this.props.user };
+      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags };
       console.log(this.props.user);
       this.props.createPost(fields);
     } else {
@@ -54,7 +54,7 @@ class Post extends Component {
           <input value={this.state.tags} onChange={this.onChangeTags} placeholder="tags" />
         </div>
         <div className="inputs">
-          <input value={this.state.contents} onChange={this.onChangeContents} placeholder="contents" />
+          <input value={this.state.content} onChange={this.onChangeContents} placeholder="contents" />
         </div>
         <div className="button">
           <button id="submit" onClick={this.onSubmit}>Submit</button>

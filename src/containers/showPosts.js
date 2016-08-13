@@ -32,6 +32,14 @@ class Show extends Component {
     this.props.fetchPost(this.props.params.id);
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState(
+      { ...this.state,
+        newTitle: nextProps.post.title,
+        newTag: nextProps.post.tags,
+        newContent: nextProps.post.content,
+      });
+  }
 
   setTitle() {
     this.setState({ ...this.state, isEditTitle: false });
@@ -74,9 +82,9 @@ class Show extends Component {
           { isEditTitle: true,
             isEditTags: false,
             isEditContent: false,
-            newTitle: this.props.post.title,
-            newTag: this.props.post.tags,
-            newContent: this.props.post.content,
+            // newTitle: this.props.post.title,
+            // newTag: this.props.post.tags,
+            // newContent: this.props.post.content,
           })}>{this.props.post.title}</div>
       );
     } else {
@@ -93,9 +101,9 @@ class Show extends Component {
           isEditTitle: false,
           isEditTags: true,
           isEditContent: false,
-          newTitle: this.props.post.title,
-          newTag: this.props.post.tags,
-          newContent: this.props.post.content,
+          // newTitle: this.props.post.title,
+          // newTag: this.props.post.tags,
+          // newContent: this.props.post.content,
         })}><i>{this.props.post.tags}</i></div>
       );
     } else {
@@ -112,9 +120,9 @@ class Show extends Component {
           isEditTitle: false,
           isEditTags: false,
           isEditContent: true,
-          newTitle: this.props.post.title,
-          newTag: this.props.post.tags,
-          newContent: this.props.post.content,
+          // newTitle: this.props.post.title,
+          // newTag: this.props.post.tags,
+          // newContent: this.props.post.content,
         })}>
           <div className="noteBody" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }}></div>
         </div>
