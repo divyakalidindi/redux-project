@@ -3,7 +3,7 @@ import { ActionTypes } from '../actions';
 const AuthReducer = (state = { authenticated: false }, action) => {
   switch (action.type) {
     case ActionTypes.AUTH_USER:
-      return { authenticated: false };
+      return { authenticated: true };
     case ActionTypes.DEATH_USER:
       return { authenticated: false };
     case ActionTypes.AUTH_ERROR:

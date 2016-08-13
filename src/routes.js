@@ -12,9 +12,9 @@ import Signup from './components/sign-up';
 export default(
   <Route path="/" component={App}>
     <IndexRoute component={Index} />
-    <Route path="posts/:id" component={Show} />
-    <Route path="posts/new" component={RequireAuth(New)} />
-    <Route path="signin" component={Signin} />
-    <Route path="signup" component={Signup} />
+    <Route path="/posts/new" component={RequireAuth(New)} />
+    <Route path="/posts/:id" component={Show} />
+    <Route path="/signin" component={Signin} />
+    <Route path="/signup" component={Signup} />
   </Route>
 );

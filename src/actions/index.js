@@ -14,8 +14,8 @@ export const ActionTypes = {
 };
 
 // const ROOT_URL = 'https://cs52-blog.herokuapp.com/api';
-// const ROOT_URL = 'http://localhost:9090/api';
-const ROOT_URL = 'https://damp-basin-30328.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
+// const ROOT_URL = 'https://damp-basin-30328.herokuapp.com/api';
 const API_KEY = '?key=divya_kalidindi';
 
 // trigger to deauth if there is error
