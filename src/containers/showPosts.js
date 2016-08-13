@@ -77,7 +77,7 @@ class Show extends Component {
             newTitle: this.props.post.title,
             newTag: this.props.post.tags,
             newContent: this.props.post.content,
-            author: this.props.post.author.email,
+            author: this.props.post.author.username,
           })}>{this.props.post.title}</div>
       );
     } else {
@@ -97,7 +97,7 @@ class Show extends Component {
           newTitle: this.props.post.title,
           newTag: this.props.post.tags,
           newContent: this.props.post.content,
-          author: this.props.post.author.email,
+          author: this.props.post.author.username,
         })}><i>{this.props.post.tags}</i></div>
       );
     } else {
@@ -117,7 +117,7 @@ class Show extends Component {
           newTitle: this.props.post.title,
           newTag: this.props.post.tags,
           newContent: this.props.post.content,
-          author: this.props.post.author.email,
+          author: this.props.post.author.username,
         })}>
           <div className="noteBody" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }}></div>
         </div>

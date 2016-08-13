@@ -22,6 +22,7 @@ class Post extends Component {
     let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags, author: this.props.user };
     if (this.state.title.length === 0) {
       fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags, author: this.props.user };
+      console.log(this.props.user);
       this.props.createPost(fields);
     } else {
       this.props.createPost(fields);
