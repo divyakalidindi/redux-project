@@ -77,7 +77,6 @@ class Show extends Component {
             newTitle: this.props.post.title,
             newTag: this.props.post.tags,
             newContent: this.props.post.content,
-            author: this.props.post.author.username,
           })}>{this.props.post.title}</div>
       );
     } else {
@@ -97,7 +96,6 @@ class Show extends Component {
           newTitle: this.props.post.title,
           newTag: this.props.post.tags,
           newContent: this.props.post.content,
-          author: this.props.post.author.username,
         })}><i>{this.props.post.tags}</i></div>
       );
     } else {
@@ -117,7 +115,6 @@ class Show extends Component {
           newTitle: this.props.post.title,
           newTag: this.props.post.tags,
           newContent: this.props.post.content,
-          author: this.props.post.author.username,
         })}>
           <div className="noteBody" dangerouslySetInnerHTML={{ __html: marked(this.props.post.content || '') }}></div>
         </div>
@@ -142,7 +139,7 @@ class Show extends Component {
             <div className="title-box">
               <div>{this.renderTitleEdits()}</div>
             </div>
-            <h5>created by {this.state.author}</h5>
+            <h5>created by {this.props.post.author.username}</h5>
             <div className="tags-box">
               <div>{this.renderTagEdits()}</div>
             </div>
