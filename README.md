@@ -1,4 +1,4 @@
-# Readme for HW 4
+# Readme for HW 5part 2 edits!
 ### Site hosted at divyablog.surge.sh
 
 I built a blog platform using React+Redux, creating an App that could list posts, edit and show individual posts, as well as create new posts.
