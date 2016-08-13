@@ -139,7 +139,7 @@ class Show extends Component {
             <div className="title-box">
               <div>{this.renderTitleEdits()}</div>
             </div>
-            <h5>created by {this.props.post.author.username}</h5>
+            <h5>created by {this.props.post.author.email}</h5>
             <div className="tags-box">
               <div>{this.renderTagEdits()}</div>
             </div>
