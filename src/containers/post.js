@@ -19,9 +19,9 @@ class Post extends Component {
   }
 
   onSubmit(event) {
-    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags, author: this.props.post.author.username };
+    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags, author: this.props.user };
     if (this.state.title.length === 0) {
-      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags, author: this.props.post.author.username };
+      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags, author: this.props.user };
       console.log(this.props.user);
       this.props.createPost(fields);
     } else {
