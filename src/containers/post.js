@@ -19,9 +19,9 @@ class Post extends Component {
   }
 
   onSubmit(event) {
-    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags };
+    let fields = { title: this.state.title, content: this.state.content, tags: this.state.tags, author: this.props.user };
     if (this.state.title.length === 0) {
-      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags };
+      fields = { title: 'untitled post', content: this.state.content, tags: this.state.tags, author: this.props.user };
       this.props.createPost(fields);
     } else {
       this.props.createPost(fields);
@@ -65,5 +65,11 @@ class Post extends Component {
     );
   }
 }
+// mapStateToProps
+const mapStateToProps = (state) => (
+  {
+    user: state.auth.user,
+  }
+);
 
-export default connect(null, { createPost })(Post);
+export default connect(mapStateToProps, { createPost })(Post);
